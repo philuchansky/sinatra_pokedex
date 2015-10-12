@@ -1,5 +1,5 @@
 <ul>
 	<% @pokemon.each do |p| %>
-		<li><%= p['name'] %></li>
+		<li><%= p['name'] %> | <img src="<%= p['img_url'] %>"></li>
 	<% end %>
 </ul>
