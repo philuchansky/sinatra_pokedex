@@ -1,9 +1,11 @@
-<h1><%= @title %></h1>
-<ul class="list-group">
-	<% @pokemon.each do |p| %>
-		<li class="list-group-item">
-			<img class="poke-thumb" src="<%= p['img_url'] %>">
-			<span><%= p['name'] %></span>
-		</li>
-	<% end %>
-</ul>
+<div class="col-md-6 col-md-offset-3">
+	<h1><%= @title %></h1>
+	<ul class="list-group">
+		<% @pokemon.each do |p| %>
+			<a href="#" class="list-group-item">
+				<img class="poke-thumb" src="<%= p['img_url'] %>">
+				<span><%= p['name'] %></span>
+			</a>
+		<% end %>
+	</ul>
+<div class="col-md-12">
