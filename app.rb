@@ -16,6 +16,8 @@ get '/' do
 		p['img_url'] = "http://pokeapi.co/media/img/#{p['id']}.png"
 	end
 
+	@pokemon.delete_if { |p| p['id'].length > 4 }
+
 	erb :home
 end
 

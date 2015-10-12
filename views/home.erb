@@ -2,9 +2,7 @@
 <ul class="list-group">
 	<% @pokemon.each do |p| %>
 		<li class="list-group-item">
-			<% if p['id'].length < 5 %>
-				<img class="poke-thumb" src="<%= p['img_url'] %>">
-			<% end %>
+			<img class="poke-thumb" src="<%= p['img_url'] %>">
 			<span><%= p['name'] %></span>
 		</li>
 	<% end %>
