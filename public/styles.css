@@ -1,5 +1,9 @@
 /*styles*/
 
+.container {
+	text-align:center;
+}
+
 span {
 	font-size:20px;
 	vertical-align:middle;
@@ -8,4 +12,3 @@ span {
 .poke-thumb {
 	max-width:65px;
 }
-
