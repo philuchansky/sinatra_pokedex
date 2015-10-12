@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><% if @title %>
+		<%= @title %>
+	<% else %>
+		Some App Name
+	<% end %></title>
+</head>
+<body>
+	<%= yield %>
+</body>
+</html>
