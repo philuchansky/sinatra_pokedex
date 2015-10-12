@@ -10,6 +10,11 @@ get '/' do
 
 	api_result = RestClient.get "http://pokeapi.co/api/v1/pokedex"
 	@pokemon = JSON.parse(api_result)["objects"][0]["pokemon"]
+	@pokemon.each do |p|
+		p['id'] = p['resource_uri'][15..-1].chop
+		p['img_url'] = "http://pokeapi.co/media/img/#{p['id']}.png"
+	end
+
 	erb :home
 end
 
@@ -18,6 +23,10 @@ get '/json' do
 
 	api_result = RestClient.get "http://pokeapi.co/api/v1/pokedex"
 	@pokemon = JSON.parse(api_result)["objects"][0]["pokemon"]
+	@pokemon.each do |p|
+		p['id'] = p['resource_uri'][15..-1].chop
+		p['img_url'] = "http://pokeapi.co/media/img/#{p['id']}.png"
+	end
 	@pokemon.to_json
 
 end
