@@ -21,6 +21,11 @@ get '/' do
 	erb :home
 end
 
+get '/api/pokemon/:id' do
+	api_result = RestClient.get "http://pokeapi.co/api/v1/pokemon/#{params[:id]}"
+	api_result
+end
+
 get '/json' do
 	@title = "Pokedex! JSON"
 
