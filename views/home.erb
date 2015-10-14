@@ -2,10 +2,70 @@
 	<h1><%= @title %></h1>
 	<ul class="list-group">
 		<% @pokemon.each do |p| %>
-			<a href="#" class="list-group-item">
+			<a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal" data-id="<%= p['id'] %>">
 				<img class="poke-thumb" src="<%= p['img_url'] %>">
 				<span><%= p['name'] %></span>
 			</a>
 		<% end %>
 	</ul>
 <div class="col-md-12">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped" id="tblGrid">
+            <thead id="tblHead">
+              <tr>
+                <th>Location</th>
+                <th>Points</th>
+                <th class="text-right">Mean</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Long Island, NY, USA</td>
+                <td>3</td>
+                <td class="text-right">45001</td>
+              </tr>
+              <tr><td>Chicago, Illinois, USA</td>
+                <td>5</td>
+                <td class="text-right">76455</td>
+              </tr>
+              <tr><td>New York, New York, USA</td>
+                <td>10</td>
+                <td class="text-right">39097</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	$('[data-toggle=modal]').click(function(){
+		//console.log($(this).attr('data-id'));
+		var pokemonId = $(this).attr('data-id');
+		$.ajax({
+		    type: 'GET',
+		    crossDomain: true,
+		    url: '/api/pokemon/' + pokemonId,
+		    dataType: 'json',
+		    contentType: "application/json",
+		    success: function(data){
+		        console.log(data)
+		        $('#myModalLabel').text(data.name);
+
+		    }
+		});
+	})
+</script>
