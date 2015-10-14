@@ -16,10 +16,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h3 class="modal-title" id="myModalLabel">Modal title</h3>
       </div>
       <div class="modal-body">
-      	<img id="large-pic" src=""
+      	<div class="large-pic-container">
+      		<img id="large-pic" src="">
+      	</div>
         <table class="table table-striped" id="tblGrid">
             <tbody>
               <tr><td>Height:</td>
@@ -39,7 +41,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -59,8 +60,8 @@
 		    success: function(data){
 		        console.log(data)
 		        $('#myModalLabel').text(data.name);
-		        $('#stat-height').text(data.height);
-		        $('#stat-weight').text(data.weight);
+		        $('#stat-height').text(data.height + " ft");
+		        $('#stat-weight').text(data.weight + " lbs");
 		        $('#stat-attack').text(data.attack);
 		        $('#stat-defense').text(data.defense);
 

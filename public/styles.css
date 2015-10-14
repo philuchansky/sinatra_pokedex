@@ -16,3 +16,16 @@ span {
 .modal {
 	text-align:initial;
 }
+
+.modal-title {
+	text-align:center;
+}
+
+.large-pic-container {
+	text-align:center;
+}
+
+#large-pic {
+	max-width:300px;
+}
+
