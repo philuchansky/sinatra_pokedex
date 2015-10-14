@@ -19,26 +19,20 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
+      	<img id="large-pic" src=""
         <table class="table table-striped" id="tblGrid">
-            <thead id="tblHead">
-              <tr>
-                <th>Location</th>
-                <th>Points</th>
-                <th class="text-right">Mean</th>
-              </tr>
-            </thead>
             <tbody>
-              <tr><td>Long Island, NY, USA</td>
-                <td>3</td>
-                <td class="text-right">45001</td>
+              <tr><td>Height:</td>
+                <td id="stat-height"></td>
               </tr>
-              <tr><td>Chicago, Illinois, USA</td>
-                <td>5</td>
-                <td class="text-right">76455</td>
+              <tr><td>Weight:</td>
+                <td id="stat-weight"></td>
               </tr>
-              <tr><td>New York, New York, USA</td>
-                <td>10</td>
-                <td class="text-right">39097</td>
+              <tr><td>Attack:</td>
+                <td id="stat-attack"></td>
+              </tr>
+              <tr><td>Defense:</td>
+                <td id="stat-defense"></td>
               </tr>
             </tbody>
           </table>
@@ -55,6 +49,7 @@
 	$('[data-toggle=modal]').click(function(){
 		//console.log($(this).attr('data-id'));
 		var pokemonId = $(this).attr('data-id');
+		$('#large-pic').attr('src','http://pokeapi.co/media/img/' + pokemonId + '.png')
 		$.ajax({
 		    type: 'GET',
 		    crossDomain: true,
@@ -64,6 +59,10 @@
 		    success: function(data){
 		        console.log(data)
 		        $('#myModalLabel').text(data.name);
+		        $('#stat-height').text(data.height);
+		        $('#stat-weight').text(data.weight);
+		        $('#stat-attack').text(data.attack);
+		        $('#stat-defense').text(data.defense);
 
 		    }
 		});
